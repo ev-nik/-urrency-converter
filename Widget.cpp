@@ -9,12 +9,14 @@ Widget::Widget(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    setWindowTitle("Конвертер валют"); // Меняем заголовок окна
+
+    ui->info->clear(); // Убрал лишний текст
+
     ui->inputRub->setFocus(); // Ставим фокус на ввод рублей
 
     connect(ui->inputRub, SIGNAL(textChanged(QString)), this, SLOT(recalc()));
     connect(ui->courseDollar, SIGNAL(textChanged(QString)), this, SLOT(recalc()));
-
-    setWindowTitle("Конвертер валют"); // Меняем заголовок окна
 }
 
 Widget::~Widget()
@@ -62,9 +64,4 @@ void Widget::recalc()
     QString endUE = QString::number(operate);
 
     ui->outputUE->setText(endUE);
-
-    //setWindowTitle("jbadv;klanvlkasnvlkasnvsa");
-
-
-
 }
