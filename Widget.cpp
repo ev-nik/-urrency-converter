@@ -15,6 +15,10 @@ Widget::Widget(QWidget *parent) :
 
     ui->inputRub->setFocus(); // Ставим фокус на ввод рублей
 
+    ui->inputRub->setPlaceholderText("Рубль");
+    ui->courseDollar->setPlaceholderText("Доллар");
+    ui->outputUE->setPlaceholderText("Сумма");
+
     connect(ui->inputRub, SIGNAL(textChanged(QString)), this, SLOT(recalc()));
     connect(ui->courseDollar, SIGNAL(textChanged(QString)), this, SLOT(recalc()));
 }
@@ -22,6 +26,7 @@ Widget::Widget(QWidget *parent) :
 Widget::~Widget()
 {
     delete ui;
+
 }
 
 void Widget::recalc()
