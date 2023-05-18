@@ -1,6 +1,9 @@
+//----------------------------------
+#include <QDebug>
+//----------------------------------
 #include "Widget.h"
 #include "ui_Widget.h"
-#include <QDebug>
+//----------------------------------
 
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
@@ -11,29 +14,50 @@ Widget::Widget(QWidget *parent) :
 
     setWindowTitle("Конвертер валют"); // Меняем заголовок окна
 
-    ui->info->clear(); // Убрал лишний текст
+    ui->info->clear();                 // Убралb лишний текст
 
-    ui->inputRub->setFocus(); // Ставим фокус на ввод рублей
+    ui->inputRub->setFocus();          // Ставим фокус на ввод рублей
 
     ui->inputRub->setPlaceholderText("Рубль");
-    ui->courseDollar->setPlaceholderText("Доллар");
+    ui->course  ->setPlaceholderText("Доллар");
     ui->outputUE->setPlaceholderText("Сумма");
 
-    connect(ui->inputRub, SIGNAL(textChanged(QString)), this, SLOT(recalc()));
-    connect(ui->courseDollar, SIGNAL(textChanged(QString)), this, SLOT(recalc()));
+    connect(ui->inputRub   , SIGNAL(textChanged(QString)), this, SLOT(recalc()));
+    connect(ui->course     , SIGNAL(textChanged(QString)), this, SLOT(recalc()));
+    connect(ui->ussdRButton, SIGNAL(clicked(bool))       , this, SLOT(changeCourseUSSD()));
+    connect(ui->euroRButton, SIGNAL(clicked(bool))       , this, SLOT(changeCourseEuro()));
+    connect(ui->cnyRButton , SIGNAL(clicked(bool))       , this, SLOT(changeCourseCNY()));
 }
+//------------------------------------------------------------------------------------
 
 Widget::~Widget()
 {
     delete ui;
+}
+//------------------------------------------------------------------------------------
 
+void Widget::changeCourseUSSD()
+{
+    ui->course->setText("75.55");
+}
+//------------------------------------------------------------------------------------
+
+void Widget::changeCourseEuro()
+{
+    ui->course->setText("85.12");
+}
+//------------------------------------------------------------------------------------
+
+void Widget::changeCourseCNY()
+{
+    ui->course->setText("11");
 }
 
+//------------------------------------------------------------------------------------
 void Widget::recalc()
 {
-
     bool ok = false;
-    QString course = ui->courseDollar->text();
+    QString course = ui->course->text();
     double translateDol = course.toDouble(&ok);
 
     if(translateDol > 0 && ok == true)
@@ -70,3 +94,4 @@ void Widget::recalc()
 
     ui->outputUE->setText(endUE);
 }
+//------------------------------------------------------------------------------------

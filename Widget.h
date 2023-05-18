@@ -1,13 +1,14 @@
+//----------------------------------
 #ifndef WIDGET_H
 #define WIDGET_H
-
+//----------------------------------
 #include <QWidget>
 #include <QLineEdit>
 #include <QTextEdit>
+//----------------------------------
 
-namespace Ui {
-    class Widget;
-}
+namespace Ui { class Widget; }
+//----------------------------------
 
 class Widget : public QWidget
 {
@@ -25,6 +26,11 @@ private:
 private slots:
 
     void recalc();
+
+    void changeCourseUSSD();
+    void changeCourseEuro();
+    void changeCourseCNY();
 };
+//------------------------------------------------------------------------------------
 
 #endif // WIDGET_H
