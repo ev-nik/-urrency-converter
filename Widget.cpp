@@ -10,6 +10,10 @@ Widget::Widget(QWidget *parent) :
     ui(new Ui::Widget)
 
 {
+    ussd = "75.55";
+    euro = "85.12";
+    cny  = "11";
+
     ui->setupUi(this);
 
     setWindowTitle("Конвертер валют"); // Меняем заголовок окна
@@ -27,6 +31,7 @@ Widget::Widget(QWidget *parent) :
     connect(ui->ussdRButton, SIGNAL(clicked(bool))       , this, SLOT(changeCourseUSSD()));
     connect(ui->euroRButton, SIGNAL(clicked(bool))       , this, SLOT(changeCourseEuro()));
     connect(ui->cnyRButton , SIGNAL(clicked(bool))       , this, SLOT(changeCourseCNY()));
+    connect(ui->course     , SIGNAL(textChanged(QString)), this, SLOT(saveCourse()));
 }
 //------------------------------------------------------------------------------------
 
@@ -38,19 +43,35 @@ Widget::~Widget()
 
 void Widget::changeCourseUSSD()
 {
-    ui->course->setText("75.55");
+    ui->course->setText(ussd);
 }
 //------------------------------------------------------------------------------------
 
 void Widget::changeCourseEuro()
 {
-    ui->course->setText("85.12");
+    ui->course->setText(euro);
 }
 //------------------------------------------------------------------------------------
 
 void Widget::changeCourseCNY()
 {
-    ui->course->setText("11");
+    ui->course->setText(cny);
+}
+//------------------------------------------------------------------------------------
+
+void Widget::saveCourse()
+{   if(ui->ussdRButton->isChecked())
+    {
+        ussd = ui->course->text();
+    }
+    else if(ui->euroRButton->isChecked())
+    {
+        euro = ui->course->text();
+    }
+    else if(ui->cnyRButton->isChecked())
+    {
+        cny = ui->course->text();
+    }
 }
 
 //------------------------------------------------------------------------------------
@@ -58,6 +79,7 @@ void Widget::recalc()
 {
     bool ok = false;
     QString course = ui->course->text();
+
     double translateDol = course.toDouble(&ok);
 
     if(translateDol > 0 && ok == true)

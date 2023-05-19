@@ -39,21 +39,21 @@
      <item row="0" column="1">
       <widget class="QLabel" name="info_2">
        <property name="text">
-        <string>Рубль</string>
+        <string>Рубли</string>
        </property>
       </widget>
      </item>
      <item row="2" column="1">
       <widget class="QLabel" name="info_3">
        <property name="text">
-        <string>Рубль / Доллар</string>
+        <string>Рубль / Валюта</string>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
       <widget class="QLabel" name="info_4">
        <property name="text">
-        <string>Курс доллара</string>
+        <string>Курс валюты</string>
        </property>
       </widget>
      </item>

@@ -23,6 +23,10 @@ public:
 private:
     Ui::Widget *ui;
 
+    QString ussd;
+    QString euro;
+    QString cny;
+
 private slots:
 
     void recalc();
@@ -30,6 +34,8 @@ private slots:
     void changeCourseUSSD();
     void changeCourseEuro();
     void changeCourseCNY();
+
+    void saveCourse();
 };
 //------------------------------------------------------------------------------------
 
