@@ -5,6 +5,7 @@
 #include <QWidget>
 #include <QLineEdit>
 #include <QTextEdit>
+#include <Qmap>
 //----------------------------------
 
 namespace Ui { class Widget; }
@@ -14,18 +15,14 @@ class Widget : public QWidget
 {
     Q_OBJECT
 
-
 public:
     explicit Widget(QWidget *parent = 0);
     ~Widget();
 
-
 private:
     Ui::Widget *ui;
 
-    QString ussd;
-    QString euro;
-    QString cny;
+    QMap <QString, QString> saveMoney;
 
 private slots:
 

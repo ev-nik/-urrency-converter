@@ -10,9 +10,9 @@ Widget::Widget(QWidget *parent) :
     ui(new Ui::Widget)
 
 {
-    ussd = "75.55";
-    euro = "85.12";
-    cny  = "11";
+    saveMoney["ussd"] = "75.55";
+    saveMoney["euro"] = "85.12";
+    saveMoney["cny"]  = "11";
 
     ui->setupUi(this);
 
@@ -43,38 +43,39 @@ Widget::~Widget()
 
 void Widget::changeCourseUSSD()
 {
-    ui->course->setText(ussd);
+    ui->course->setText(saveMoney["ussd"]);
 }
 //------------------------------------------------------------------------------------
 
 void Widget::changeCourseEuro()
 {
-    ui->course->setText(euro);
+    ui->course->setText(saveMoney["euro"]);
 }
 //------------------------------------------------------------------------------------
 
 void Widget::changeCourseCNY()
 {
-    ui->course->setText(cny);
+    ui->course->setText(saveMoney["cny"]);
 }
 //------------------------------------------------------------------------------------
 
 void Widget::saveCourse()
-{   if(ui->ussdRButton->isChecked())
-    {
-        ussd = ui->course->text();
-    }
-    else if(ui->euroRButton->isChecked())
-    {
-        euro = ui->course->text();
-    }
-    else if(ui->cnyRButton->isChecked())
-    {
-        cny = ui->course->text();
-    }
+{
+        if(ui->ussdRButton->isChecked())
+        {
+            saveMoney["ussd"] = ui->course->text();
+        }
+        else if(ui->euroRButton->isChecked())
+        {
+            saveMoney["euro"] = ui->course->text();
+        }
+        else if(ui->cnyRButton->isChecked())
+        {
+            saveMoney["cny"] = ui->course->text();
+        }
 }
-
 //------------------------------------------------------------------------------------
+
 void Widget::recalc()
 {
     bool ok = false;
