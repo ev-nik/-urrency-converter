@@ -5,14 +5,19 @@
 #include "ui_Widget.h"
 //----------------------------------
 
+#define USSD "ussd"
+#define EURO "euro"
+#define CNY  "cny"
+
+
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
 
 {
-    saveMoney["ussd"] = "75.55";
-    saveMoney["euro"] = "85.12";
-    saveMoney["cny"]  = "11";
+    saveMoney[USSD] = "75.12";
+    saveMoney[EURO] = "85.55";
+    saveMoney[CNY]  = "11";
 
     ui->setupUi(this);
 
@@ -43,36 +48,36 @@ Widget::~Widget()
 
 void Widget::changeCourseUSSD()
 {
-    ui->course->setText(saveMoney["ussd"]);
+    ui->course->setText(saveMoney[USSD]);
 }
 //------------------------------------------------------------------------------------
 
 void Widget::changeCourseEuro()
 {
-    ui->course->setText(saveMoney["euro"]);
+    ui->course->setText(saveMoney[EURO]);
 }
 //------------------------------------------------------------------------------------
 
 void Widget::changeCourseCNY()
 {
-    ui->course->setText(saveMoney["cny"]);
+    ui->course->setText(saveMoney[CNY]);
 }
 //------------------------------------------------------------------------------------
 
 void Widget::saveCourse()
 {
-        if(ui->ussdRButton->isChecked())
-        {
-            saveMoney["ussd"] = ui->course->text();
-        }
-        else if(ui->euroRButton->isChecked())
-        {
-            saveMoney["euro"] = ui->course->text();
-        }
-        else if(ui->cnyRButton->isChecked())
-        {
-            saveMoney["cny"] = ui->course->text();
-        }
+    if(ui->ussdRButton->isChecked())
+    {
+        saveMoney[USSD] = ui->course->text();
+    }
+    else if(ui->euroRButton->isChecked())
+    {
+        saveMoney[EURO] = ui->course->text();
+    }
+    else if(ui->cnyRButton->isChecked())
+    {
+        saveMoney[CNY] = ui->course->text();
+    }
 }
 //------------------------------------------------------------------------------------
 
