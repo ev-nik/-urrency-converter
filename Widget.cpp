@@ -28,7 +28,7 @@ Widget::Widget(QWidget *parent) :
     ui->inputRub->setFocus();          // Ставим фокус на ввод рублей
 
     ui->inputRub->setPlaceholderText("Рубль");
-    ui->course  ->setPlaceholderText("Доллар");
+    ui->course  ->setPlaceholderText("Курс валюты");
     ui->outputUE->setPlaceholderText("Сумма");
 
     connect(ui->inputRub   , SIGNAL(textChanged(QString)), this, SLOT(recalc()));
@@ -37,6 +37,8 @@ Widget::Widget(QWidget *parent) :
     connect(ui->euroRButton, SIGNAL(clicked(bool))       , this, SLOT(changeCourseEuro()));
     connect(ui->cnyRButton , SIGNAL(clicked(bool))       , this, SLOT(changeCourseCNY()));
     connect(ui->course     , SIGNAL(textChanged(QString)), this, SLOT(saveCourse()));
+
+    ui->ussdRButton->click(); // Выбран радиобаттон по умолчанию
 }
 //------------------------------------------------------------------------------------
 
@@ -48,7 +50,9 @@ Widget::~Widget()
 
 void Widget::changeCourseUSSD()
 {
+
     ui->course->setText(saveMoney[USSD]);
+    qDebug() << "lkffnb;onfb;nbonbrbnrb";
 }
 //------------------------------------------------------------------------------------
 
@@ -66,6 +70,11 @@ void Widget::changeCourseCNY()
 
 void Widget::saveCourse()
 {
+    if(ui->saveBox->checkState() == false)
+    {
+        return;
+    }
+
     if(ui->ussdRButton->isChecked())
     {
         saveMoney[USSD] = ui->course->text();
@@ -78,6 +87,7 @@ void Widget::saveCourse()
     {
         saveMoney[CNY] = ui->course->text();
     }
+
 }
 //------------------------------------------------------------------------------------
 

@@ -7,27 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>346</width>
-    <height>196</height>
+    <height>209</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Widget</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
-   <item row="4" column="0">
-    <widget class="QRadioButton" name="ussdRButton">
-     <property name="text">
-      <string>USSD</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0">
-    <widget class="QRadioButton" name="euroRButton">
-     <property name="text">
-      <string>Euro</string>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="0">
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="0">
@@ -69,7 +55,35 @@
      </property>
     </widget>
    </item>
-   <item row="7" column="0">
+   <item row="2" column="0">
+    <widget class="QRadioButton" name="ussdRButton">
+     <property name="text">
+      <string>USSD</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QRadioButton" name="euroRButton">
+     <property name="text">
+      <string>Euro</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QRadioButton" name="cnyRButton">
+     <property name="text">
+      <string>CNY</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QCheckBox" name="saveBox">
+     <property name="text">
+      <string>Сохранить курс</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -82,19 +96,13 @@
      </property>
     </spacer>
    </item>
-   <item row="6" column="0">
-    <widget class="QRadioButton" name="cnyRButton">
-     <property name="text">
-      <string>CNY</string>
-     </property>
-    </widget>
-   </item>
   </layout>
   <zorder>info</zorder>
   <zorder>verticalSpacer</zorder>
   <zorder>ussdRButton</zorder>
   <zorder>cnyRButton</zorder>
   <zorder>euroRButton</zorder>
+  <zorder>saveBox</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
